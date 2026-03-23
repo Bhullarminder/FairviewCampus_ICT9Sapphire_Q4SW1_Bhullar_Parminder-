@@ -3,62 +3,57 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SEATWORK 1</title> <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <title>SEATWORK 1</title>
 
-    <style>
-        body {
-     background-color: #f5f5f5;
-        }
-    </style>
-    
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
 </head>
 <body>
 
-<div class="container bg-dark text-light p-4 mt-3 mb-4 w-50 text-center rounded">
+<div class="container bg-dark text-light p-4 mt-3 mb-4 w-50 text-center rounded mx-auto">
     <h1>Password Checker</h1>
 
     <details>
         <summary>Instructions:</summary>
-        <p id="instruct"></p>
+        <p id="Instruct"></p>
     </details>
 
-    <input type="password" id="passwordInput" class="form-control w-50 mx-auto mt-3" placeholder="Enter password">
-
-    <div class="form-check mt-3">
-        <input class="form-check-input" type="checkbox" id="checkboxID">
-        <label class="form-check-label">Check Password</label>
+    <div class="d-flex justify-content-center mb-3">
+        <input class="form-control" style="width: 450px;" type="password" id="password" placeholder="Enter password">
     </div>
 
-    <button class="btn btn-light mt-3" onclick="checkPassword()">Submit</button>
+    <button class="btn btn-success" onclick="check()">Submit</button>
 
-    <p id="resultMessage" class="mt-3"></p>
+    <p id="result" class="mt-3"></p>
 </div>
 
 <script>
-    document.getElementById("instruct").innerHTML = 
-    "Enter your password and tick the checkbox to validate it.";
+document.getElementById("Instruct").innerHTML = 
+"Enter your password to check if it is correct.";
 
-    function checkPassword() {
-        var isChecked = document.getElementById("checkboxID").checked;
-        var password = document.getElementById("passwordInput").value;
-        var correctPassword = "12345";
+function check(){
 
-        switch(isChecked) {
-            case true:
-                if(password === correctPassword) {
-                    alert("Correct Password!");
-                    document.getElementById("resultMessage").innerHTML = "Access Granted";
-                } else {
-                    alert("Incorrect Password!");
-                    document.getElementById("resultMessage").innerHTML = "Access Denied";
-                }
-            break;
+    var password = document.getElementById("password").value;
+    var result = "";
 
-            case false:
-                document.getElementById("resultMessage").innerHTML = "";
-            break;
-        }
+    switch(true){
+
+        case (password == "12345"):
+            result = "Access Granted";
+            alert("Correct Password");
+        break;
+
+        case (password == ""):
+            result = "";
+        break;
+
+        default:
+            result = "Access Denied";
+            alert("Incorrect Password");
+        break;
     }
+
+    document.getElementById("result").innerHTML = result;
+}
 </script>
 
 </body>
